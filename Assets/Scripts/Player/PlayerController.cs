@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,10 +19,6 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
         animator = GetComponentInChildren<Animator>();
     }
-    private void Update()
-    {
-
-    }
 
     public void OnClik(InputAction.CallbackContext context)
     {
@@ -33,8 +30,10 @@ public class PlayerController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos, transform.forward, maxDistance);
             if (hit)
             {
-                animator.SetTrigger("IsWalking");
+                GameManager.Instance.Player.count++;
             }
         }
     }
+
+
 }
