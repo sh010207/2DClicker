@@ -4,9 +4,14 @@ public class GoodsManager : MonoBehaviour
 {
     public Gold gold;
     public ClickCount clickCount;
-    public int playerGold;
+
     private static GoodsManager instance;
+
+    // 현재 플레이어의 ClikCount, Gold
     public int playerClickCount;
+    public int playerGold;
+
+    // 거리에 따른 보상
     public int bonusCount;
     public int targetBonusCount;
 

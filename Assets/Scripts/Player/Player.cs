@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public PlayerController controller;
     public PlayerStat stat;
-    private void Start()
+    private void Awake()
     {
         GameManager.Instance.Player = this;
         controller = GetComponent<PlayerController>();

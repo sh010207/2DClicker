@@ -9,7 +9,7 @@ public class UIClick : MonoBehaviour
 
     private void Update()
     {
-        clickCountText.text = $"{GoodsManager.Instance.clickCount}";
+        clickCountText.text = $"{GoodsManager.Instance.playerClickCount}";
         goldText.text = $"{GoodsManager.Instance.playerGold}G";
     }
 }
