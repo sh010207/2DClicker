@@ -15,7 +15,7 @@ public class UIClick : MonoBehaviour
 
     private void Update()
     {
-        clickCountText.text = $"{GoodsManager.Instance.playerClickCount}";
+        clickCountText.text = $"{GoodsManager.Instance.playerClickCount}M";
         goldText.text = $"{GoodsManager.Instance.playerGold}G";
 
         clickPowerLvText.text = $"ClickPower\nLv{GameManager.Instance.Player.stat.ClickPowerLevel}";

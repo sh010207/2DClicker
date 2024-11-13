@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
+using UnityEngine;
 
 public class GoodsManager : MonoBehaviour
 {
@@ -7,19 +10,17 @@ public class GoodsManager : MonoBehaviour
 
     private static GoodsManager instance;
 
+    public List<RewardData> rewards = new List<RewardData>();
+
     // 현재 플레이어의 ClikCount, Gold
     public int playerClickCount;
     public int playerGold;
-
-    // 카운트 갯수에 따른 보상
-    public int rewardClickCount;
-    public int targetBonusCount;
 
     public static GoodsManager Instance
     {
         get
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = new GoodsManager();
             }
@@ -43,7 +44,7 @@ public class GoodsManager : MonoBehaviour
     private void Update()
     {
         ClickCountSave();
-        ClickToGold();
+        ClearGold();
     }
 
     public void ClickCountSave()
@@ -51,13 +52,16 @@ public class GoodsManager : MonoBehaviour
         PlayerPrefs.SetInt("ClickCount", playerClickCount);
     }
 
-    public void ClickToGold()
+    public void ClearGold()
     {
-        if(rewardClickCount == targetBonusCount)
+        for (int i = 0; i < rewards.Count; i++)
         {
-            gold.Add(1000);
-            gold.Set();
-            rewardClickCount = 0;
-        }
-    }   
+            if (rewards[i].TargetCount <= playerClickCount)
+            {
+                gold.Add(1000);
+                gold.Set();
+                rewards.Remove(rewards[i]);
+            }
+        }    
+    }
 }

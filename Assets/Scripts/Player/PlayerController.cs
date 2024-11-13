@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 {
     public Action click;
     private IEnumerator coroutine;
+    private float coolTime = 10f;
 
     private void Awake()
     {
@@ -25,19 +26,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnMouseDown()
     {
+
         GoodsManager.Instance.clickCount
             .Add(GameManager.Instance.Player.stat.ClickPower);
 
         GoodsManager.Instance.clickCount.Set();
 
-        GoodsManager.Instance.rewardClickCount++;
+        //GoodsManager.Instance.rewardClickCount++;
 
         GoodsManager.Instance.gold
             .Add(GameManager.Instance.Player.stat.Gold);
         GoodsManager.Instance.gold.Set();
     }
 
-    IEnumerator AutoClick(float coolTime)
+    IEnumerator AutoClick()
     {
         while (coolTime > 0)
         {
