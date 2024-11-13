@@ -1,30 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ClickCount : MonoBehaviour
+public class ClickCount : MonoBehaviour , IUpgradeTool
 {
-    public TextMeshProUGUI clickCount;
+    private int clickCount;
 
-    public TextMeshProUGUI currentConut;
-
-    private void Update()
+    public void Add(int click)
     {
-        clickCount.text = $"{GameManager.Instance.Player.count}";
-        ClickCountSave();
+        clickCount += click;
     }
 
-    public void ClickCountSave()
+    public void Set()
     {
-        PlayerPrefs.SetInt("ClickCount", int.Parse(clickCount.text));
-    }
-
-    public void ClickCountLoad()
-    {
-        if(PlayerPrefs.HasKey("ClickCount"))
-        {
-            currentConut.text = PlayerPrefs.GetInt("ClickCount").ToString();
-        }
+        GoodsManager.Instance.playerClickCount = clickCount;
     }
 }
