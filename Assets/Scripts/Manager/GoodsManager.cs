@@ -11,8 +11,8 @@ public class GoodsManager : MonoBehaviour
     public int playerClickCount;
     public int playerGold;
 
-    // 거리에 따른 보상
-    public int bonusCount;
+    // 카운트 갯수에 따른 보상
+    public int rewardClickCount;
     public int targetBonusCount;
 
     public static GoodsManager Instance
@@ -51,22 +51,13 @@ public class GoodsManager : MonoBehaviour
         PlayerPrefs.SetInt("ClickCount", playerClickCount);
     }
 
-    public void ClickCountLoad()
-    {
-        if (PlayerPrefs.HasKey("ClickCount"))
-        {
-            playerClickCount = PlayerPrefs.GetInt("ClickCount");
-        }
-    }
-
     public void ClickToGold()
     {
-        if(bonusCount == targetBonusCount)
+        if(rewardClickCount == targetBonusCount)
         {
             gold.Add(1000);
-            gold.Set(); 
-            bonusCount = 0;
+            gold.Set();
+            rewardClickCount = 0;
         }
-    }
-    
+    }   
 }

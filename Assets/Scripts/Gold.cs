@@ -21,4 +21,9 @@ public class Gold : MonoBehaviour , IUpgradeTool
     {
         gold += pay;
     }
+
+    public void Sub(int pay)
+    {
+        gold -= pay;
+    }
 }

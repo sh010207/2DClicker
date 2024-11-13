@@ -7,10 +7,12 @@ public class Player : MonoBehaviour
 {
     public PlayerController controller;
     public PlayerStat stat;
+    public UpgradeSystem upgradeSystem;
     private void Awake()
     {
         GameManager.Instance.Player = this;
         controller = GetComponent<PlayerController>();
         stat = GetComponent<PlayerStat>();
+        upgradeSystem = GetComponent<UpgradeSystem>();
     }
 }

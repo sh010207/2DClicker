@@ -26,12 +26,11 @@ public class PlayerController : MonoBehaviour
     private void OnMouseDown()
     {
         GoodsManager.Instance.clickCount
-            .Add(GameManager.Instance.Player.stat.Click);
+            .Add(GameManager.Instance.Player.stat.ClickPower);
 
         GoodsManager.Instance.clickCount.Set();
 
-        // 보상 받을 수 있는지 확인하는 ClickCount
-        GoodsManager.Instance.bonusCount++;
+        GoodsManager.Instance.rewardClickCount++;
 
         GoodsManager.Instance.gold
             .Add(GameManager.Instance.Player.stat.Gold);
